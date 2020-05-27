@@ -52,8 +52,6 @@
     <script>
         netlifyIdentity.on('login', function(user) {
 
-            window.token = user.token.access_token
-
             getData('README.md').then(function(result) {
 
                 console.log(result);
