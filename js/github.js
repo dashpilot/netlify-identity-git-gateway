@@ -21,7 +21,7 @@ function getData(mypath = '') {
 
         })
         .catch(error => {
-            return error
+            return 'error:' + error
         });
 
 }
