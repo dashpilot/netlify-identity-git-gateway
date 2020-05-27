@@ -1,6 +1,8 @@
 function getData(mypath = '') {
 
-
+    let user = netlifyIdentity.currentUser()
+    console.log(user)
+    let token = user.token.access_token
 
     var url = "/.netlify/git/github/contents/" + mypath;
     var bearer = 'Bearer ' + token;
@@ -28,7 +30,7 @@ function saveData(mypath, data) {
 
     getData(mypath).then(function(curfile) {
 
-        let user = await netlifyIdentity.currentUser()
+        let user = netlifyIdentity.currentUser()
         let token = user.token.access_token
 
         let opts = {
