@@ -1,11 +1,10 @@
 function getData(mypath = '') {
 
     let user = netlifyIdentity.currentUser()
-    console.log(user)
     let token = user.token.access_token
 
-    var url = "/.netlify/git/github/contents/" + mypath;
-    var bearer = 'Bearer ' + token;
+    var url = "/.netlify/git/github/contents/" + mypath
+    var bearer = 'Bearer ' + token
     return fetch(url, {
             method: 'GET',
             withCredentials: true,
@@ -15,13 +14,13 @@ function getData(mypath = '') {
                 'Content-Type': 'application/json'
             }
         }).then(resp => {
-            return resp.json();
+            return resp.json()
         }).then(data => {
 
             if (data.code == 400) {
 
                 netlifyIdentity.refresh().then(function(token) {
-                    getData(mypath);
+                    getData(mypath)
                 })
 
             } else {
@@ -30,7 +29,7 @@ function getData(mypath = '') {
         })
         .catch(error => {
             return error
-        });
+        })
 
 }
 
@@ -53,8 +52,8 @@ function saveData(mypath, data) {
             opts.sha = curfile.sha
         }
 
-        var url = "/.netlify/git/github/contents/" + mypath;
-        var bearer = 'Bearer ' + token;
+        var url = "/.netlify/git/github/contents/" + mypath
+        var bearer = 'Bearer ' + token
         fetch(url, {
                 body: JSON.stringify(opts),
                 method: 'PUT',
@@ -65,14 +64,22 @@ function saveData(mypath, data) {
                     'Content-Type': 'application/json'
                 }
             }).then(resp => {
-                return resp.json();
+                return resp.json()
             }).then(data => {
-                console.log(data)
+                if (data.code == 400) {
+
+                    netlifyIdentity.refresh().then(function(token) {
+                        saveData(mypath)
+                    })
+
+                } else {
+                    return data
+                }
             })
             .catch(error => this.setState({
                 message: 'Error: ' + error
-            }));
+            }))
 
-    });
+    })
 
 }

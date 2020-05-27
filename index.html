@@ -51,7 +51,7 @@
 
     <script>
         document.querySelector('#login').addEventListener('click', function() {
-            netlifyIdentity.open();
+            netlifyIdentity.open()
         })
 
         netlifyIdentity.on('login', function(user) {
@@ -60,20 +60,20 @@
 
             getData('README.md').then(function(result) {
 
-                console.log(result);
+                console.log(result)
 
                 let data = atob(result.content)
 
                 var converter = new showdown.Converter(),
-                    html = converter.makeHtml(data);
+                    html = converter.makeHtml(data)
 
-                document.querySelector('#result').innerHTML = html;
-            });
+                document.querySelector('#result').innerHTML = html
+            })
 
             // save data example
             // saveData('newfile.txt', 'Some data')
 
-        });
+        })
     </script>
 
 
