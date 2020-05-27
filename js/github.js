@@ -17,11 +17,19 @@ function getData(mypath = '') {
         }).then(resp => {
             return resp.json();
         }).then(data => {
-            return data
 
+            if (data.code == 200) {
+
+                netlifyIdentity.refresh().then(function(token) {
+                    getData(mypath);
+                })
+
+            } else {
+                return data
+            }
         })
         .catch(error => {
-            return 'error:' + error
+            return error
         });
 
 }
