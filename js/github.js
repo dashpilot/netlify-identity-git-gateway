@@ -29,6 +29,9 @@ function saveData(mypath, data) {
 
     getData(mypath).then(function(curfile) {
 
+        let user = netlifyIdentity.currentUser()
+        let token = user.token.access_token
+
         let opts = {
             path: mypath,
             message: "initial commit",
