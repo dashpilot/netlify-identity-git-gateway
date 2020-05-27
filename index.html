@@ -52,7 +52,10 @@
     <script>
         netlifyIdentity.on('login', function(user) {
 
+
             getData('README.md').then(function(result) {
+
+                console.log(result);
 
                 let data = atob(result.content)
 
