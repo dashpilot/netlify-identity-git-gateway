@@ -8,6 +8,17 @@
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
 
+    <style>
+        .wrapper {
+            width: 320px;
+            margin: 0 auto;
+        }
+        
+        button {
+            margin-top: 25px;
+        }
+    </style>
+
     <!-- Netlify Identity Widget -->
     <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
@@ -18,16 +29,24 @@
 
 <body>
 
+    <div class="wrapper mt-5">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Log In</h5>
+                <p class="card-text">Log in with Netlify Identity</p>
+                <button class="btn btn-outline-dark w-100" data-netlify-identity-button></button>
+            </div>
+        </div>
+    </div>
 
-    <div class="btn btn-outline-dark" data-netlify-identity-button>Log in with Netlify Identity</div>
+    <div class="container" id="result"></div>
 
     <script>
-        netlifyIdentity.on('init', function(user) {
-
-            console.log(user)
+        netlifyIdentity.on('login', function(user) {
 
             getData('README.md').then(function(result) {
-                console.log(atob(result.content))
+                let data = atob(result.content)
+                document.querySelector('#result').innerHTML = data;
             });
 
         });
