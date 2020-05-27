@@ -52,6 +52,7 @@
     <script>
         netlifyIdentity.on('login', function(user) {
 
+            console.log(user);
 
             getData('README.md').then(function(result) {
 
