@@ -1,5 +1,39 @@
-function getData(mypath = '') { let user = netlifyIdentity.currentUser() let token = user.token.access_token var url = "/.netlify/git/github/contents/" + mypath; var bearer = 'Bearer ' + token; return fetch(url, { method: 'GET', withCredentials: true,
-credentials: 'include', headers: { 'Authorization': bearer, 'Content-Type': 'application/json' } }).then(resp => { return resp.json(); }).then(data => { return data }) .catch(error => { return error }); } function saveData(mypath, data) { getData().then(function(files)
-{ let curfile = files.filter(x => x.path == mypath) let opts = { path: mypath, message: "initial commit", content: btoa(data), branch: "master", committer: { name: "Dashpilot", email: "support@dashpilot.com" }, } if (typeof curfile[0] !== 'undefined')
-{ opts.sha = curfile[0].sha } var url = "/.netlify/git/github/contents/" + mypath; var bearer = 'Bearer ' + token; fetch(url, { body: JSON.stringify(opts), method: 'PUT', withCredentials: true, credentials: 'include', headers: { 'Authorization': bearer,
-'Content-Type': 'application/json' } }).then(resp => { return resp.json(); }).then(data => { console.log(data) }) .catch(error => this.setState({ message: 'Error: ' + error })); }); }
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Netlify Identity Widget -->
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Github -->
+    <script type="text/javascript" src="js/github.js"></script>
+
+</head>
+
+<body>
+
+
+    <div class="btn btn-outline-dark" data-netlify-identity-button>Log in with Netlify Identity</div>
+
+    <script>
+        netlifyIdentity.on('init', function(user) {
+
+            console.log(user)
+
+            getData('test.txt').then(function(result) {
+                console.log(atob(result.content))
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>
