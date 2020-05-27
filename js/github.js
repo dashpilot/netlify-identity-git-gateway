@@ -1,7 +1,6 @@
 function getData(mypath = '') {
 
-    let user = netlifyIdentity.currentUser()
-    let token = user.token.access_token
+
 
     var url = "/.netlify/git/github/contents/" + mypath;
     var bearer = 'Bearer ' + token;
