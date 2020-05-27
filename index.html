@@ -42,7 +42,7 @@
             <div class="card-body text-center">
                 <h5 class="card-title">Log In</h5>
                 <p class="card-text">Log in with Netlify Identity</p>
-                <button class="btn btn-outline-dark w-100" data-netlify-identity-button></button>
+                <button class="btn btn-outline-dark w-100" id="login">Log In / Register</button>
             </div>
         </div>
     </div>
@@ -50,7 +50,13 @@
     <div class="container" id="result"></div>
 
     <script>
+        document.querySelector('#login').addEventListener('click', function() {
+            netlifyIdentity.open();
+        })
+
         netlifyIdentity.on('login', function(user) {
+
+            document.querySelector('#login').innerHTML = 'Log Out'
 
             getData('README.md').then(function(result) {
 
