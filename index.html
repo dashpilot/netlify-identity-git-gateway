@@ -25,6 +25,9 @@
     <!-- Github -->
     <script type="text/javascript" src="js/github.js"></script>
 
+    <!-- Markdown parser, just for this example -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
 </head>
 
 <body>
@@ -46,7 +49,11 @@
 
             getData('README.md').then(function(result) {
                 let data = atob(result.content)
-                document.querySelector('#result').innerHTML = data;
+
+                var converter = new showdown.Converter(),
+                    html = converter.makeHtml(data);
+
+                document.querySelector('#result').innerHTML = html;
             });
 
         });
