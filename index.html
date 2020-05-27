@@ -16,7 +16,7 @@
         
         .container {
             margin-top: 50px;
-            margin-bottom: 50px;
+            margin-bottom: 100px;
         }
         
         button {
@@ -53,6 +53,7 @@
         netlifyIdentity.on('login', function(user) {
 
             getData('README.md').then(function(result) {
+
                 let data = atob(result.content)
 
                 var converter = new showdown.Converter(),
@@ -60,6 +61,8 @@
 
                 document.querySelector('#result').innerHTML = html;
             });
+
+            saveData('newfile.txt', 'Some data')
 
         });
     </script>

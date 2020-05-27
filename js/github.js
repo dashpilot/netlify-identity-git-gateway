@@ -27,9 +27,7 @@ function getData(mypath = '') {
 
 function saveData(mypath, data) {
 
-    getData().then(function(files) {
-
-        let curfile = files.filter(x => x.path == mypath)
+    getData(mypath).then(function(curfile) {
 
         let opts = {
             path: mypath,
@@ -39,8 +37,8 @@ function saveData(mypath, data) {
             committer: { name: "Dashpilot", email: "support@dashpilot.com" },
         }
 
-        if (typeof curfile[0] !== 'undefined') {
-            opts.sha = curfile[0].sha
+        if (typeof curfile !== 'undefined') {
+            opts.sha = curfile.sha
         }
 
         var url = "/.netlify/git/github/contents/" + mypath;
