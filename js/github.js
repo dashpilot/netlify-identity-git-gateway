@@ -18,7 +18,7 @@ function getData(mypath = '') {
             return resp.json();
         }).then(data => {
 
-            if (data.code == 200) {
+            if (data.code == 400) {
 
                 netlifyIdentity.refresh().then(function(token) {
                     getData(mypath);
