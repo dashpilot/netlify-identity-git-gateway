@@ -32,5 +32,5 @@ getData('README.md').then(function(result) {
 
 Saves the data to the provided path. If the file already exists, it overwrites it, else it creates a new file.
 
-### Press the :star: button
+## Press the :star: button
 Don't forget to press the :star: button to let me know I should continue improving this project
