@@ -24,7 +24,7 @@ If no parameter is provided, this function lists the contents of the repo. If yo
 
 ```
 getData('README.md').then(function(result) {
-    console.log(atob(result.content)) // atob decodes the base64 content string
+    console.log(result.content)
 });
 ```
 
