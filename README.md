@@ -28,7 +28,7 @@ getData('README.md').then(function(result) {
 });
 ```
 
-### saveData(path);
+### saveData(path, data);
 
 Saves the data to the provided path. If the file already exists, it overwrites it, else it creates a new file.
 
