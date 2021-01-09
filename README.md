@@ -1,6 +1,6 @@
 # Netlify Identity and Git Gateway
 
-Example of how to use Netlify Identity and Git Gateway to save files to Github
+Example of how to use Netlify Identity and Git Gateway to save files to Github (without using Netlify CMS)
 
 ## About
 
