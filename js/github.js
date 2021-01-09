@@ -46,7 +46,7 @@ function saveData(mypath, data) {
             path: mypath,
             message: "initial commit",
             content: btoa(data),
-            branch: "master",
+            branch: "main",
             committer: { name: "Dashpilot", email: "support@dashpilot.com" },
         }
 
