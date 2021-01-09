@@ -24,7 +24,7 @@ function getData(mypath = '') {
                 })
 
             } else {
-                // prepare content
+                // base64 decode content
                 data.content = atob(data.content)
                 return data
             }
