@@ -62,7 +62,7 @@
 
                 console.log(result)
 
-                let data = atob(result.content)
+                let data = result.content
 
                 var converter = new showdown.Converter(),
                     html = converter.makeHtml(data)
