@@ -24,6 +24,8 @@ function getData(mypath = '') {
                 })
 
             } else {
+                // prepare content
+                data.content = atob(data.content)
                 return data
             }
         })
