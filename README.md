@@ -30,7 +30,13 @@ getData('README.md').then(function(result) {
 
 ### saveData(path, data);
 
-Saves the data to the provided path. If the file already exists, it overwrites it, else it creates a new file.
+Saves the data to the provided path. If the file already exists, it overwrites it, else it creates a new file. The data can be any string: text, stringified json or a base64 image.
+
+```
+saveData('README.md', 'String to save').then(function(result) {
+    console.log(result)
+});
+```
 
 ## Press the :star: button
 Don't forget to press the :star: button to let me know I should continue improving this project
