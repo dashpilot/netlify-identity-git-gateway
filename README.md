@@ -2,6 +2,9 @@
 
 Example of how to use Netlify Identity and Git Gateway to save files to Github (without using Netlify CMS)
 
+## Update: check out the tutorial on Dev.to
+For an in-depth tutorial, check out my blog post on [Dev.to](https://dev.to/dashpilot/how-to-save-your-app-s-data-to-a-github-repo-without-any-server-side-code-using-netlify-s-git-gateway-3c32)
+
 ## About
 
 Netlify's Git Gateway gives your site's Netlify Identity users access to your connected Github Repo. This allows applications to read from and write files to the repo on your user's behalf. This is perfect for creating a small CMS to power a SPA or Static Site Generator, just like Netlify did with Netlify CMS. This example uses a Github Repo, but I'm sure it can be adjusted to work with Gitlab.
