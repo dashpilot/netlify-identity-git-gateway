@@ -1,10 +1,10 @@
-function getData(mypath = '') {
+async function getData(mypath = '') {
 
     let user = netlifyIdentity.currentUser()
     let token = user.token.access_token
-
     var url = "/.netlify/git/github/contents/" + mypath
     var bearer = 'Bearer ' + token
+    
     return fetch(url, {
             method: 'GET',
             withCredentials: true,
@@ -35,13 +35,12 @@ function getData(mypath = '') {
 
 }
 
-function saveData(mypath, data) {
+async function saveData(mypath, data) {
 
-    getData(mypath).then(function(curfile) {
+    return getData(mypath).then(function(curfile) {
 
         let user = netlifyIdentity.currentUser()
         let token = user.token.access_token
-
         let opts = {
             path: mypath,
             message: "initial commit",
@@ -49,14 +48,13 @@ function saveData(mypath, data) {
             branch: "main",
             committer: { name: "Dashpilot", email: "support@dashpilot.com" },
         }
-
         if (typeof curfile !== 'undefined') {
             opts.sha = curfile.sha
         }
 
         var url = "/.netlify/git/github/contents/" + mypath
         var bearer = 'Bearer ' + token
-        fetch(url, {
+        return fetch(url, {
                 body: JSON.stringify(opts),
                 method: 'PUT',
                 withCredentials: true,
