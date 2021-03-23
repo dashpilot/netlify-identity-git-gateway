@@ -2,7 +2,7 @@
 
 Example of how to use Netlify Identity and Git Gateway to save files to Github (without using Netlify CMS)
 
-## Update: check out the tutorial on Dev.to
+## New: blog post on Dev.to
 For an in-depth tutorial, check out my [blog post on Dev.to](https://dev.to/dashpilot/how-to-save-your-app-s-data-to-a-github-repo-without-any-server-side-code-using-netlify-s-git-gateway-3c32)
 
 ## About
